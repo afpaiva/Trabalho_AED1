@@ -277,7 +277,7 @@ int main (){
                           printf("\n\t%s", estacionamento[i].nome_rua);
                         }
                         printf("\n\nPressione enter para continuar...");
-                        getchar;
+                        getchar();
                     }
 
                     else erro(8);
@@ -296,7 +296,7 @@ int main (){
                           printf("\n\tRua %s | Número de Vagas Disponíveis: %d\n", estacionamento[i].nome_rua, estacionamento[i].num_vagas);
                         }
                         printf(  "\n\nPressione enter para continuar...");
-                        getchar;
+                        getchar();
 
                     }
 
