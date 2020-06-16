@@ -1,7 +1,7 @@
 /*Projeto final - Controle de vagas de estacionamento | Fase 2
 Professor: Claudio Correa e Luiz Gomes
-Dupla: AndrÈ Fonseca de Paiva e Fernando Thales Pereira
-⁄lltima atualizaÁ„o: 16/06/2020 */
+Dupla: Andr√© Fonseca de Paiva e Fernando Thales Pereira
+√ölltima atualiza√ß√£o: 16/06/2020 */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,7 +29,7 @@ typedef struct {
 
 typedef struct {
     char placa[10];
-    int tempo; // vamos usar para saber se a vaga est· ocupada ou n„o
+    int tempo; // vamos usar para saber se a vaga est√° ocupada ou n√£o
     int ruaID;
 } carros;
 
@@ -39,17 +39,17 @@ int main (){
 
     int opcaoMenu, i, escolha, opcaoMenuRelatorio;
     int acessoMenuRuas = 1, acessoMenuVagas = 0, acessoMenuValor = 0, acessoUsuario = 0;
-    //vari·veis "acesso..." controlam os acessos ao menu, s„o booleanas
+    //vari√°veis "acesso..." controlam os acessos ao menu, s√£o booleanas
     int ruasOK = 0, vagasOK = 0, valorOK = 0;
-    //variaveis "OK" para saber o que j· foi entrado
+    //variaveis "OK" para saber o que j√° foi entrado
     ruas estacionamento[QUANT_RUAS];
-    int valida; // a2[Para validaÁıes em geral]
-    float validaf; // a2[Para validaÁıes em geral]
+    int valida; // a2[Para valida√ß√µes em geral]
+    float validaf; // a2[Para valida√ß√µes em geral]
     int rua_escolhida; // registra temporariamente a rua escolhida
     carros carro[QUANT_VAGAS*QUANT_RUAS]; // struct carros com total de vagas disponiveis
-    int carroID; // guarda provisoriamente o carro que est· sendo tratado
+    int carroID; // guarda provisoriamente o carro que est√° sendo tratado
 
-    //zerando os tempos das vagas para facilitar no relatÛrio depois
+    //zerando os tempos das vagas para facilitar no relat√≥rio depois
     for (int i = 0; i < QUANT_VAGAS*QUANT_RUAS; i++)
         carro[i].tempo = 0;
 
@@ -63,7 +63,7 @@ int main (){
         printf ("\n+----------------------------------------------+\n|      Sistema de Estacionamento Rotativo      |\n+----------------------------------------------+\n");
 
         printf ("\n       ***** Menu *****               \n");
-        printf ("\n     Selecione a opÁ„o desejada     \n\n");
+        printf ("\n     Selecione a op√ß√£o desejada     \n\n");
 
         if (acessoMenuRuas)
           printf ("Cadastrar Ruas..................[1]\n");
@@ -71,9 +71,9 @@ int main (){
           printf ("Cadastrar Ruas..................[-]\n");
 
         if (acessoMenuVagas)
-          printf ("Cadastro de N˙meros de Vagas....[2]\n");
+          printf ("Cadastro de N√∫meros de Vagas....[2]\n");
           else
-          printf ("Cadastro de N˙meros de Vagas....[-]\n");
+          printf ("Cadastro de N√∫meros de Vagas....[-]\n");
 
         if (acessoMenuValor)
           printf ("Cadastro de Valor de Vagas......[3]\n");
@@ -83,21 +83,21 @@ int main (){
         if (acessoUsuario){
           printf ("Estacionar um Carro.............[4]\n");
           printf ("Liberar Vaga....................[5]\n");
-          printf ("Emitir RelatÛrio................[6]\n");
+          printf ("Emitir Relat√≥rio................[6]\n");
         }else{
           printf ("Estacionar um Carro.............[-]\n");
           printf ("Liberar Vaga....................[-]\n");
-          printf ("Emitir RelatÛrio................[-]\n");
+          printf ("Emitir Relat√≥rio................[-]\n");
         }
 
         printf ("Sair............................[0]\n\n");
 
 
-        printf("Digite a opÁ„o desejada: ");
+        printf("Digite a op√ß√£o desejada: ");
         scanf("%i",&opcaoMenu);
         getchar(); //a[coloquei um getchar aqui]
 
-        if (opcaoMenu<0 || opcaoMenu>6) erro(1); // a[erro È uma funÁ„o l· em baixo]
+        if (opcaoMenu<0 || opcaoMenu>6) erro(1); // a[erro √© uma fun√ß√£o l√° em baixo]
 
         switch(opcaoMenu){
 
@@ -107,7 +107,7 @@ int main (){
                 if (acessoMenuRuas){
                   for (int i = 0; i < QUANT_RUAS; i++)
                   {
-                    printf("\n\tInsira o nome da %i™ rua a ser cadastrada: ",i+1);
+                    printf("\n\tInsira o nome da %i¬™ rua a ser cadastrada: ",i+1);
                     scanf("%[^\n]s",estacionamento[i].nome_rua);
                     getchar();
                     // a[Cadastro de ruas OK!]
@@ -118,17 +118,17 @@ int main (){
                   acessoMenuRuas = 0;
                   acessoMenuVagas = 1;
                 }
-                else erro(2); // a[funÁ„o l· em baixo]
+                else erro(2); // a[fun√ß√£o l√° em baixo]
 
            break; //a[coloquei uns breaks]
 
-            //**Cadastro de N˙meros de Vagas
+            //**Cadastro de N√∫meros de Vagas
            case 2:
 
-                if (acessoMenuVagas){//a[sÛ entra se as ruas j· estiverem cadastradas]
+                if (acessoMenuVagas){//a[s√≥ entra se as ruas j√° estiverem cadastradas]
                   for (int i = 0; i < QUANT_RUAS; i++)
                   {
-                    printf("\n\tInsira o n˙mero de vagas disponÌveis para Rua %s: ", estacionamento[i].nome_rua);
+                    printf("\n\tInsira o n√∫mero de vagas dispon√≠veis para Rua %s: ", estacionamento[i].nome_rua);
                     scanf("%i",&valida); getchar();
                     if (valida<5 || valida>20){
                         i--;
@@ -154,7 +154,7 @@ int main (){
                 if (acessoMenuValor){
                   for (int i = 0; i < QUANT_RUAS; i++)
                   {
-                    printf("\n\t Insira o valor das vagas para 30 minutos na Rua %s:\n\t(Utilize vÌrgula para separaÁ„o dos centavos): ", estacionamento[i].nome_rua);
+                    printf("\n\t Insira o valor das vagas para 30 minutos na Rua %s:\n\t(Utilize v√≠rgula para separa√ß√£o dos centavos): ", estacionamento[i].nome_rua);
                     scanf("%f",&validaf); getchar();
                     if (validaf<1 || validaf>2){
                         i--;
@@ -186,7 +186,7 @@ int main (){
                     for (int i = 0; i < QUANT_RUAS; i++)
                         printf ("%d. %s\t\t\t.......[%d]\n",i+1,estacionamento[i].nome_rua,i+1);
 
-                    printf("\nDigite a opÁ„o desejada: ");
+                    printf("\nDigite a op√ß√£o desejada: ");
                     scanf("%d",&valida); getchar();
                     if (valida<1 || valida>3){
                         i--;
@@ -210,13 +210,13 @@ int main (){
 
                         //debug*******************************************
                         printf ("\n\t\t ****DEBUG**** ");
-                        printf ("\n\t\t carros cadastrados atÈ agora: \n");
+                        printf ("\n\t\t carros cadastrados at√© agora: \n");
 
                         for (int i = 0; i < QUANT_RUAS*QUANT_VAGAS; i++){
                             if(carro[i].tempo != 0){
-                                printf ("\n\t\t rua: %d ", carro[i].ruaID);
-                                printf ("\n\t\t placa: %s ", carro[i].placa);
-                                printf ("\n\t\t tempo: %d \n", carro[i].tempo);
+                                printf ("\n\t\t Rua: %d ", carro[i].ruaID);
+                                printf ("\n\t\t Placa: %s ", carro[i].placa);
+                                printf ("\n\t\t Tempo: %d \n", carro[i].tempo);
                                 printf ("\n\t\t---%d", i);
                             }
                         }
@@ -234,7 +234,7 @@ int main (){
 
                 if (acessoUsuario){
                   printf("em desenvolvimento");getchar();
-                  //ELABORA«√O DA FUN«√O 5
+                  //ELABORA√á√ÉO DA FUN√á√ÉO 5
                   //printf("\n\tLiberar vaga: ");
                   //scanf("%i",&escolha);
                 }
@@ -242,31 +242,30 @@ int main (){
 
            break;
 
-           //f: 6. Emitir RelatÛrio//
+           //f: 6. Emitir Relat√≥rio//
            case 6:
 
 
-                printf ("\n****************** RelatÛrio Di·rio ******************\n");
+                printf ("\n****************** Relat√≥rio Di√°rio ******************\n");
 
-                printf ("\n              Selecione a opÁ„o desejada            \n\n");
+                printf ("\n              Selecione a op√ß√£o desejada            \n\n");
 
                 printf ("1. Ruas Cadastradas..................................[1]\n");
-                printf ("2. Total de Vagas DisponÌveis por rua................[2]\n");
+                printf ("2. Total de Vagas Dispon√≠veis por rua................[2]\n");
                 printf ("3. Carros Estacionados...............................[3]\n");
                 printf ("4. Carros Estacionados por rua.......................[4]\n");
-                printf ("5. Custo MÈdio por Estacionamento....................[5]\n");
+                printf ("5. Custo M√©dio por Estacionamento....................[5]\n");
                 printf ("6. Definir...........................................[6]\n");
                 printf ("7. Definir...........................................[7]\n");
                 printf ("Sair.................................................[0]\n\n");
 
-                printf("Digite a opÁ„o desejada: ");
+                printf("Digite a op√ß√£o desejada: ");
                 scanf("%d",&opcaoMenuRelatorio);
                 getchar();
 
                 switch(opcaoMenuRelatorio){
 
                 //**Ruas cadastradas
-                CLEAR_SCREEN
                 case 1:
 
                     if (acessoUsuario){
@@ -275,29 +274,30 @@ int main (){
 
                         for (int i = 0; i < QUANT_RUAS; i++)
                         {
-                          for (int i = 0; i < QUANT_RUAS; i++)
                           printf("\n\t%s", estacionamento[i].nome_rua);
-                          getchar();
                         }
+                        printf("\n\nPressione enter para continuar...");
+                        getchar;
                     }
 
                     else erro(8);
 
                 break;
 
-                //**Total de Vagas DisponÌveis por rua
+                //**Total de Vagas Dispon√≠veis por rua
                 case 2:
 
                     if (acessoUsuario){
 
-                        printf("\n\t2. Total de Vagas DisponÌveis por Rua ------------\n");
+                        printf("\n\t2. Total de Vagas Dispon√≠veis por Rua ------------\n");
 
                         for (int i = 0; i < QUANT_RUAS; i++)
                         {
-                          for (int i = 0; i < QUANT_RUAS; i++)
-                          printf("\n\tRua %s | N˙mero de Vagas DisponÌveis: %d\n", estacionamento[i].nome_rua, estacionamento[i].num_vagas);
-                          getchar();
+                          printf("\n\tRua %s | N√∫mero de Vagas Dispon√≠veis: %d\n", estacionamento[i].nome_rua, estacionamento[i].num_vagas);
                         }
+                        printf(  "\n\nPressione enter para continuar...");
+                        getchar;
+
                     }
 
                     else erro(8);
@@ -306,11 +306,9 @@ int main (){
 
                 //**Carros Estacionados
                 case 3:
-                        printf("em desenvolvimento");getchar();
+                        printf("em desenvolvimento");
+                        getchar();
                       //Carros Estacionados por rua//
-
-
-                    else erro(8);
 
                 break;
 
@@ -320,10 +318,10 @@ int main (){
 
                 break;
 
-                //**Custo MÈdio por Estacionamento
+                //**Custo M√©dio por Estacionamento
                 case 5:
                     printf("em desenvolvimento");getchar();
-                      //Custo MÈdio por Estacionamento//
+                      //Custo M√©dio por Estacionamento//
 
                 break;
 
@@ -343,11 +341,11 @@ int main (){
                 break;
 
             break;
-              }//f: Encerra Submenu RelatÛrios
+              }//f: Encerra Submenu Relat√≥rios
 
         case 0:
 
-        printf("\n\tObrigado por utilizar este programa. AtÈ a prÛxima!\n\n");
+        printf("\n\tObrigado por utilizar este programa. At√© a pr√≥xima!\n\n");
 
         }
 
@@ -357,28 +355,28 @@ int main (){
 }
 
 /*
-Arquivo com funÁ„o de tratamento de erros.
+Arquivo com fun√ß√£o de tratamento de erros.
 */
 
 # include<stdio.h>
 
 //void erro (int codErro, int rua, int vaga, int valor){ //rascunho
 void erro (int codErro){
-  // a[essa funÁ„o vai imprimir mensagens de erro, qq d˙vida È sÛ me falar, ok?]
+  // a[essa fun√ß√£o vai imprimir mensagens de erro, qq d√∫vida √© s√≥ me falar, ok?]
 
   switch(codErro){
 
-    case 1: //opÁ„o inv·lida
+    case 1: //op√ß√£o inv√°lida
       printf("\n\n+--------------------------------------+");
-      printf(  "\n|            OpÁ„o inv·lida            |");
+      printf(  "\n|            Op√ß√£o inv√°lida            |");
       printf(  "\n+--------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
       break;
 
-    case 2: //ruas j· foram cadastradas
+    case 2: //ruas j√° foram cadastradas
       printf("\n\n+--------------------------------------+");
-      printf(  "\n|     As ruas j· est„o cadastradas     |");
+      printf(  "\n|     As ruas j√° est√£o cadastradas     |");
       printf(  "\n+--------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
@@ -386,7 +384,7 @@ void erro (int codErro){
 
     case 3: //requer cadastro de ruas
       printf("\n\n+--------------------------------------+");
-      printf(  "\n|    … necess·rio cadastrar as ruas    |");
+      printf(  "\n|    √â necess√°rio cadastrar as ruas    |");
       printf(  "\n+--------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
@@ -394,13 +392,13 @@ void erro (int codErro){
 
     case 4: //requer cadastro de ruas e valores
       printf("\n\n+--------------------------------------+");
-      printf(  "\n|   … necess·rio cadastrar as vagas    |");
+      printf(  "\n|   √â necess√°rio cadastrar as vagas    |");
       printf(  "\n+--------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
       break;
 
-    case 5: //requer configuraÁ„o inicial (ruas preÁo e vagas)
+    case 5: //requer configura√ß√£o inicial (ruas pre√ßo e vagas)
       printf("\n\n+---------------------------------------+");
       printf(  "\n|  O programa precisa ser configurado   |");
       printf(  "\n+---------------------------------------+");
@@ -408,39 +406,39 @@ void erro (int codErro){
       getchar();
       break;
 
-    case 6: //vagas j· foram cadastradas
+    case 6: //vagas j√° foram cadastradas
       printf("\n\n+---------------------------------------+");
-      printf(  "\n|      VocÍ j· cadastrou as vagas       |");
+      printf(  "\n|      Voc√™ j√° cadastrou as vagas       |");
       printf(  "\n+---------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
       break;
 
-    case 7: //valores j· foram cadastrados
+    case 7: //valores j√° foram cadastrados
       printf("\n\n+---------------------------------------+");
-      printf(  "\n|     VocÍ j· cadastrou os valores      |");
+      printf(  "\n|     Voc√™ j√° cadastrou os valores      |");
       printf(  "\n+---------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
       break;
 
-    case 8: //Dados n„o encontrados. - RelatÛrios
+    case 8: //Dados n√£o encontrados. - Relat√≥rios
       printf("\n\n+---------------------------------------+");
-      printf(  "\n|         Dados n„o encontrados         |");
+      printf(  "\n|         Dados n√£o encontrados         |");
       printf(  "\n+---------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
       break;
 
-    case 9: //Dados n„o encontrados. - RelatÛrios
+    case 9: //Dados n√£o encontrados. - Relat√≥rios
       printf("\n\n+---------------------------------------------+");
-      printf(  "\n|   O n˙mero de vagas deve ser entre 5 e 20   |");
+      printf(  "\n|   O n√∫mero de vagas deve ser entre 5 e 20   |");
       printf(  "\n+---------------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
       break;
 
-    case 10: //Dados n„o encontrados. - RelatÛrios
+    case 10: //Dados n√£o encontrados. - Relat√≥rios
       printf("\n\n+--------------------------------------------------------+");
       printf(  "\n| O valor para 30 minutos deve ser entre R$1,00 e R$2,00 |");
       printf(  "\n+--------------------------------------------------------+");
@@ -448,9 +446,9 @@ void erro (int codErro){
       getchar();
       break;
 
-    case 11: //Dados n„o encontrados. - RelatÛrios
+    case 11: //Dados n√£o encontrados. - Relat√≥rios
       printf("\n\n+----------------------------------------+");
-      printf(  "\n| O tempo v·lido È entre 1 e 120 minutos |");
+      printf(  "\n| O tempo v√°lido √© entre 1 e 120 minutos |");
       printf(  "\n+----------------------------------------+");
       printf(  "\n\nPressione enter para continuar...");
       getchar();
