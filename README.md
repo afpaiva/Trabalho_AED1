@@ -17,6 +17,13 @@ Através do terminal execute:
 ```bash
 gcc projetoFinal.c erros.c -o estacionamento
 ```
+Será gerado um arquivo estacionamento.exe.
+
+Basta executá-lo.
+
+```bash
+estacionamento.exe
+```
 
 ## Pré requisitos
 Requer compilador GCC.
