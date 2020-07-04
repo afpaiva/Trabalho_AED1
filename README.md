@@ -6,8 +6,7 @@ PUC Minas Campus Poços de Caldas
 
 ## Autores
 
-Fernando Thales Pereira
-André Fonseca de Paiva
+Fernando Thales Pereira e André Fonseca de Paiva
 
 ## Compilação
 
